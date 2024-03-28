@@ -1,0 +1,26 @@
+<h3>Registro de Usuario</h3>
+
+<div class="card m-8" style="width: 40%; block-size: center;">
+  <form *ngIf="FormCliente" [formGroup]="FormCliente" autocomplete="off" (ngSubmit)="login()">
+    <label for="clientname" class="block text-900 font-medium mb-2">Nombre: </label>
+    <input id="clientname" type="text" pInputText class="w-full mb-3" formControlName="Nombre">
+
+    <label for="lastname" class="block text-900 font-medium mb-2">Apellido: </label>
+    <input id="lastname" type="text" pInputText class="w-full mb-3" formControlName="Apellido">
+
+    <label for="identification" class="block text-900 font-medium mb-2">Cedula: </label>
+    <input id="identification" type="text" pInputText class="w-full mb-3" formControlName="Cedula">
+
+    <label for="phonenumber" class="block text-900 font-medium mb-2">Telefono: </label>
+    <input id="phonenumber" type="text" pInputText class="w-full mb-3" formControlName="Telefono">
+
+    <label for="address" class="block text-900 font-medium mb-2">Direccion: </label>
+    <input id="address" type="password" pInputText class="w-full mb-3" formControlName="Direccion" >
+
+    <label for="referenceaddress" class="block text-900 font-medium mb-2">Referencia Direccion: </label>
+    <input id="referenceaddress" type="password" pInputText class="w-full mb-3" formControlName="Referencia" >
+
+    <button type="submit" pButton pRipple label="Registrar cliente" class="w-full" [disabled]="FormCliente.invalid"></button>
+
+  </form>
+</div>
