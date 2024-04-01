@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsContract, ConsPagos, ConsultReq, ConsultReqContract } from '../../interface/Consulta.interface';
-import { HttpClientModule } from '@angular/common/http';
 import { ConsultService } from '../../services/consult.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -19,18 +18,18 @@ ResultadoContract!: ConsContract;
 
   ngOnInit(): void {
     this.ConsulForm = this.formBuilder.group({
-      identification: ['', Validators.required],
+      identification: ['', [Validators.required, Validators.pattern('^[0-9]{10,}$')]],
       startdate: ['', Validators.required],
       enddate: ['', Validators.required]
     });
 
     this.ConsulFormContract = this.formBuilder.group({
-      identificationContract: ['', Validators.required]
+      identificationContract: ['', [Validators.required, Validators.pattern('^[0-9]{10,}$')]]
     });
   }
 
   pagosList: ConsPagos[] = [];
-
+  noRecordsFound: boolean = false;
 
   realizarConsulta() {
     const formValues = this.ConsulForm.value;
@@ -43,6 +42,7 @@ ResultadoContract!: ConsContract;
       .subscribe(
         (response: ConsPagos[]) => {
           console.log(response)
+          this.noRecordsFound = this.pagosList.length === 0;
           this.pagosList = response;
         },
         (error) => {

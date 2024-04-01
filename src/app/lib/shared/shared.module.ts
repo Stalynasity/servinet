@@ -33,6 +33,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SliderModule } from 'primeng/slider';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputGroupModule } from 'primeng/inputgroup';
+import { InputFormClientComponent } from './input-form-client/input-form-client.component';
+import { InputFormContractComponent } from './input-form-contract/input-form-contract.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { InputGroupModule } from 'primeng/inputgroup';
     NotfoundComponent,
     HeaderComponent,
     InputconsultComponent,
+    InputFormClientComponent,
+    InputFormContractComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -75,7 +79,9 @@ import { InputGroupModule } from 'primeng/inputgroup';
   exports: [
     NotfoundComponent,
     HeaderComponent,
-    InputconsultComponent
+    InputconsultComponent,
+    InputFormClientComponent,
+    InputFormContractComponent
   ]
 })
 export class SharedModule { }

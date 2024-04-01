@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-ingreso-cliente',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './ingreso-cliente.component.css'
 })
 export class IngresoClienteComponent {
+
+
+
+
+  showClientForm: boolean = true;
+
+  constructor() {}
+
+  Activador(ocultar: boolean){
+    this.showClientForm = ocultar;
+  }
+
 
 }

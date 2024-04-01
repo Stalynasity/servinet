@@ -1,0 +1,22 @@
+<div class="m-3">
+  <form [formGroup]="ContractForm" autocomplete="off" (ngSubmit)="onSubmitContractData()">
+    <label  class="block text-900 font-medium mb-2">Fecha de Inicio: </label>
+    <p-calendar formControlName="FechaStards" dateFormat="yy-mm-dd" [showIcon]="true"
+        class="p-calendar p-component" readonly></p-calendar>
+
+    <label class="block text-900 font-medium mb-2">Fecha de terminacion: </label>
+    <p-calendar formControlName="FechaEnd" dateFormat="yy-mm-dd" [showIcon]="true"
+        class="p-calendar p-component" readonly></p-calendar>
+
+        <label class="block text-900 font-medium mb-2">Metodo de pago: </label>
+        <p-dropdown formControlName="MetodoPago" [options]="metodosPago" optionLabel="label" optionValue="value"></p-dropdown>
+
+        <label class="block text-900 font-medium mb-2">Servicio: </label>
+        <p-dropdown formControlName="Servicio" [options]="servicios" optionLabel="label" optionValue="value"></p-dropdown>
+
+    <label class="block text-900 font-medium mb-2">Verifica la identificacion del cliente:  </label>
+    <input  type="text" pInputText class="w-full mb-3" formControlName="ClienteContrac" >
+
+    <button type="submit" pButton pRipple label="Buscar" class="w-full" [disabled]="!ContractForm.valid"></button>
+  </form>
+  </div>

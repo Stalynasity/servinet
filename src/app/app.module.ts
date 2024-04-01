@@ -11,7 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputFormClientComponent } from './lib/shared/input-form-client/input-form-client.component';
 
 
 @NgModule({
@@ -29,7 +31,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MenubarModule,
     ButtonModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

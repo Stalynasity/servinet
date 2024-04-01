@@ -1,0 +1,23 @@
+<div >
+<form [formGroup]="ClientForm" autocomplete="off" (ngSubmit)="onSubmitClientData()">
+  <label  class="block text-900 font-medium mb-2">Nombre</label>
+  <input type="text" pInputText class="w-full mb-3" formControlName="Nombre">
+
+  <label class="block text-900 font-medium mb-2">Apellido</label>
+  <input  type="text" pInputText class="w-full mb-3" formControlName="Apellido" >
+
+  <label class="block text-900 font-medium mb-2">Identificación</label>
+  <input  type="text" pInputText class="w-full mb-3" formControlName="Identificación" >
+
+  <label class="block text-900 font-medium mb-2">Teléfono</label>
+  <input  type="text" pInputText class="w-full mb-3" formControlName="Teléfono" >
+
+  <label class="block text-900 font-medium mb-2">Dirección</label>
+  <input  type="text" pInputText class="w-full mb-3" formControlName="Dirección" >
+
+  <label class="block text-900 font-medium mb-2">Referencia de dirección</label>
+  <input  type="text" pInputText class="w-full mb-3" formControlName="RefDireccion" >
+
+  <button type="submit" pButton pRipple label="Ingresar" class="w-full" [disabled]="!ClientForm.valid"></button>
+</form>
+</div>

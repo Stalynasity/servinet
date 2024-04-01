@@ -28,25 +28,20 @@ export class LoginComponent {
   constructor(private fb: FormBuilder,
     private router: Router,
     private authService: AuthService
-
-  ) { }
+  ) {}
 
   login() {
     const loginRequest: LoginRequest = this.miFormulario.value;
-
     this.authService.login(loginRequest).subscribe(
       response => {
         // console.log(response);
-
         if (!response) {
-          this.router.navigateByUrl('registroCliente')// Asigna el mensaje de error del API a la propiedad
+          this.router.navigateByUrl('auth/clientenew')
         } else {
-
           this.errorDeInicioDeSesion = response;
         }
       },
-
-
     );
   }
+
 }

@@ -1,6 +1,5 @@
 <div class="p-grid p-dir-row m-4">
 
-
   <h2>Ver pagos por fechas</h2>
   <form (submit)="realizarConsulta()" class="formgroup-inline" [formGroup]="ConsulForm">
 
@@ -10,21 +9,21 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
     </div>
 
-    <div class="p-col">
+    <div class="p-col ml-3">
       <h5>Desde:</h5>
       <p-calendar formControlName="startdate" dateFormat="yy-mm-dd" [showIcon]="true"
         class="p-calendar p-component"></p-calendar>
     </div>
 
-    <div class="p-col">
+    <div class="p-col ml-3">
       <h5>Hasta:</h5>
       <p-calendar formControlName="enddate" dateFormat="yy-mm-dd" [showIcon]="true"
         class="p-calendar p-component"></p-calendar>
     </div>
 
-    <div class="p-col ml-3">
-      <h5>_</h5>
-      <button type="submit" pButton pRipple label="Buscar" class="w-full"></button>
+    <div class="p-col mt-4 ml-3">
+      <h5></h5>
+      <button type="submit" pButton pRipple label="Buscar" class="w-full" [disabled]="!ConsulForm.valid"></button>
     </div>
   </form>
 
@@ -33,72 +32,74 @@
     <div class="p-listbox">
       <div class="p-listbox-header">Resultados</div>
       <div class="p-listbox-list">
-        <a href="#" class="p-listbox-item" *ngFor="let result of pagosList">
-          <!-- Muestra los detalles del resultado aquí -->
-          <div>Consumo {{ result.paymentid }}</div>
-          <div> Fecha: {{ result.paymentdate | date:'dd/MM/yyyy'}}</div>
-          <div>Cliente {{result.clientClientid }}</div>
-          <!-- Agrega más detalles según sea necesario -->
+        <ng-container *ngIf="pagosList.length > 0; else noRecords">
+          <a href="#" class="p-listbox-item" *ngFor="let result of pagosList">
+            <div>Consumo {{ result.paymentid }}</div>
+            <div> Fecha: {{ result.paymentdate | date:'dd/MM/yyyy'}}</div>
+            <div>Cliente {{result.clientClientid }}</div>
+          </a>
+        </ng-container>
+        <ng-template #noRecords>
+          <div class="no-records-message" *ngIf="noRecordsFound"> No se han encontrado registros.</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="p-grid p-dir-row m-4 mt-8">
+  <h2>Ver servicios contratados</h2>
+  <form (submit)="realizarConsultaContract()" class="formgroup-inline" [formGroup]="ConsulFormContract">
+
+    <div class="p-col">
+      <h5>Identificacion(C.I.)</h5>
+      <input formControlName="identificationContract" type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+    </div>
+
+    <div class="p-col mt-4 ml-3">
+      <h5></h5>
+      <button type="submit" pButton pRipple label="Buscar" class="w-full" [disabled]="!ConsulFormContract.valid"></button>
+    </div>
+  </form>
+
+
+  <div class="p-col mt-4">
+    <div class="p-listbox">
+      <div class="p-listbox-header">Resultados</div>
+      <div class="p-listbox-list">
+        <a href="#" class="p-listbox-item" *ngFor="let result of pagosListContract">
+          <div class="result-item">
+            <div class="result-detail">
+              <span class="label">Fecha de Inicio:</span>
+              <span class="value">{{ result.startdate | date:'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="result-detail">
+              <span class="label">Fecha de Fin:</span>
+              <span class="value">{{ result.enddate | date:'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="result-detail">
+              <span class="label">ID de Estado del Contrato:</span>
+              <span class="value">{{ result.statuscontractStatusid }}</span>
+            </div>
+            <div class="result-detail">
+              <span class="label">ID del Método de Pago:</span>
+              <span class="value">{{ result.methodpaymentMethodpaymentid }}</span>
+            </div>
+            <div class="result-detail">
+              <span class="label">ID del Servicio:</span>
+              <span class="value">{{ result.serviceServiceid }}</span>
+            </div>
+            <div class="result-detail">
+              <span class="label">ID del Cliente:</span>
+              <span class="value">{{ result.clientClientid }}</span>
+            </div>
+            <!-- Agrega más detalles según sea necesario -->
+          </div>
         </a>
       </div>
     </div>
-
-    <hr>
-
-
-
-    <h2>Ver servicios contratados</h2>
-    <form (submit)="realizarConsultaContract()" class="formgroup-inline" [formGroup]="ConsulFormContract">
-
-      <div class="p-col">
-        <h5>Identificacion(C.I.)</h5>
-        <input formControlName="identificationContract" type="text"
-          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
-      </div>
-
-      <div class="p-col ml-3">
-        <h5>_</h5>
-        <button type="submit" pButton pRipple label="Buscar" class="w-full"></button>
-      </div>
-    </form>
-
-
-    <div class="p-col mt-4">
-      <div class="p-listbox">
-        <div class="p-listbox-header">Resultados</div>
-        <div class="p-listbox-list">
-          <a href="#" class="p-listbox-item" *ngFor="let result of pagosListContract">
-            <div class="result-item">
-              <div class="result-detail">
-                <span class="label">Fecha de Inicio:</span>
-                <span class="value">{{ result.startdate | date:'dd/MM/yyyy' }}</span>
-              </div>
-              <div class="result-detail">
-                <span class="label">Fecha de Fin:</span>
-                <span class="value">{{ result.enddate | date:'dd/MM/yyyy' }}</span>
-              </div>
-              <div class="result-detail">
-                <span class="label">ID de Estado del Contrato:</span>
-                <span class="value">{{ result.statuscontractStatusid }}</span>
-              </div>
-              <div class="result-detail">
-                <span class="label">ID del Método de Pago:</span>
-                <span class="value">{{ result.methodpaymentMethodpaymentid }}</span>
-              </div>
-              <div class="result-detail">
-                <span class="label">ID del Servicio:</span>
-                <span class="value">{{ result.serviceServiceid }}</span>
-              </div>
-              <div class="result-detail">
-                <span class="label">ID del Cliente:</span>
-                <span class="value">{{ result.clientClientid }}</span>
-              </div>
-              <!-- Agrega más detalles según sea necesario -->
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
-
-    </div>
+  </div>
+</div>
