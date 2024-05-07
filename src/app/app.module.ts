@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputFormClientComponent } from './lib/shared/input-form-client/input-form-client.component';
+import { NewUsuaComponent } from './lib/page/new-usua/new-usua.component';
 
 
 @NgModule({

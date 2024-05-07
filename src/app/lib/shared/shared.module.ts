@@ -35,6 +35,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputFormClientComponent } from './input-form-client/input-form-client.component';
 import { InputFormContractComponent } from './input-form-contract/input-form-contract.component';
+import { InputFormUsuarioComponent } from './input-form-usuario/input-form-usuario.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { InputFormContractComponent } from './input-form-contract/input-form-con
     HeaderComponent,
     InputconsultComponent,
     InputFormClientComponent,
-    InputFormContractComponent
+    InputFormContractComponent,
+    InputFormUsuarioComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -81,7 +83,8 @@ import { InputFormContractComponent } from './input-form-contract/input-form-con
     HeaderComponent,
     InputconsultComponent,
     InputFormClientComponent,
-    InputFormContractComponent
+    InputFormContractComponent,
+    InputFormUsuarioComponent
   ]
 })
 export class SharedModule { }

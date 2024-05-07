@@ -1,12 +1,13 @@
 
-export interface LoginResponse {
+export interface LoginResponse<T> {
   statusCode: number;
-  data?: LoginData;
+  data?: T;
   message?: string;
 }
 
 export interface LoginData {
   userName: string;
+  rolId: number;
   token: string;
 }
 

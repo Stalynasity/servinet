@@ -35,7 +35,7 @@ export class InputFormContractComponent implements OnInit {
 
     const formValues = this.ContractForm.value;
     const consultRequest: ContractRequest = {
-      startdate: formValues.FechaStard,
+      startdate: this.ContractForm.get('FechaStards')!.value,
       enddate: formValues.FechaEnd,
       methodpaymentMethodpaymentid: formValues.MetodoPago,
       serviceServiceid: formValues.Servicio,
@@ -46,8 +46,8 @@ export class InputFormContractComponent implements OnInit {
       response => {
         console.log(response);
 
-        if (!response) {
-          this.router.navigateByUrl('')
+        if (response) {
+          this.router.navigateByUrl('/auth/cajero')
         }
       },
     );
@@ -55,7 +55,7 @@ export class InputFormContractComponent implements OnInit {
 
   ngOnInit(): void {
     this.ContractForm = this.formBuilder.group({
-      FechaStards: new FormControl(new Date()),
+      FechaStards: [new Date(), Validators.required],
       FechaEnd: ['', Validators.required],
       MetodoPago: ['', Validators.required],
       Servicio: ['', Validators.required],

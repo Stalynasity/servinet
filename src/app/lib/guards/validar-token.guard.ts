@@ -4,9 +4,9 @@ import { AuthService } from '../services/auth.service';
 
 export const validarTokenGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
+  const authservice = inject(AuthService);
 
-  const localData = localStorage.getItem('token');
-  if (localData != null) {
+  if (authservice.isLogginIn()) {
     return true;
   } else {
     router.navigateByUrl('/auth/login')

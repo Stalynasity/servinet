@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class PageCajaComponent {
 
+  datoForm = [
+    {descripcion: 'Ingresar un nuevo cliente y contrato', url:'clientenew'},
+    {descripcion: 'Cambio del servicio contratado', url:'clientenew'},
+    {descripcion: 'Cambio de forma de pago', url:'clientenew'},
+    {descripcion: ' Cancelación de contrato del servicio', url:'clientenew'},
+    {descripcion: ' Ver pagos', url:'clientenew'}
+  ]
+
+
+
 }

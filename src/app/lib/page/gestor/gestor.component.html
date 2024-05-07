@@ -1,1 +1,32 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-700 text-center">
+    <div class="text-900 font-bold text-5xl mb-3">BIENVENIDO - GESTOR</div>
+    <div class="text-700 text-2xl mb-5">Comienza a interactuar </div>
 
+    <!-- <button pButton pRipple label="" icon="pi pi-discord"
+      class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"></button> -->
+  </div>
+</div>
+
+<div class="surface-section px-4 py-5 md:px-6 lg:px-8">
+  <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+    <li>
+      <span class="text-900 line-height-3">Actividades</span>
+    </li>
+  </ul>
+
+  <div *ngFor="let item of datoForm">
+    <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row"
+      >
+      <div>
+        <div class="font-medium text-3xl text-900">{{item.descripcion}}</div>
+
+      </div>
+      <div class="mt-3 lg:mt-0">
+        <button pButton pRipple label="{{item.btn}}" icon="pi pi-check" [routerLink]="['/auth/', item.url]"></button>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div>

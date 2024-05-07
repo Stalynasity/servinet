@@ -37,17 +37,20 @@ export class InputFormClientComponent implements OnInit {
       address: formValues.Dirección,
       referenceaddress: formValues.RefDireccion
     };
+
     this.authService.InsertCLientService(consultRequest).subscribe(
       response => {
-        console.log(response);
+        if (response) {
+          console.log(response);
         this.cambioRegistro()
-
-        if (!response) {
-          this.router.navigateByUrl('')// Asigna el mensaje de error del API a la propiedad
         }
       },
+      error => {
+        if (error.error.includes("Ya existe un cliente con el mismo número de identificación.")) {
+          alert("Ya existe un cliente con el mismo número de identificación.");
+        }
+      }
     );
-
   }
 
 

@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { GestorComponent } from './gestor/gestor.component';
 import { PageCajaComponent } from './caja/page-caja/page-caja.component';
+import { NewUsuaComponent } from './new-usua/new-usua.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { PageCajaComponent } from './caja/page-caja/page-caja.component';
     ConsultasComponent,
     GestorComponent,
     PageCajaComponent,
+    NewUsuaComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,10 @@ import { PageCajaComponent } from './caja/page-caja/page-caja.component';
   exports: [
     InicioComponent,
     IngresoClienteComponent,
+    ConsultasComponent,
+    GestorComponent,
+    PageCajaComponent,
+    NewUsuaComponent
   ]
 })
 export class PageModule { }

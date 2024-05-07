@@ -36,7 +36,7 @@
           <a href="#" class="p-listbox-item" *ngFor="let result of pagosList">
             <div>Consumo {{ result.paymentid }}</div>
             <div> Fecha: {{ result.paymentdate | date:'dd/MM/yyyy'}}</div>
-            <div>Cliente {{result.clientClientid }}</div>
+            <div>Cliente {{result.clientClient }}</div>
           </a>
         </ng-container>
         <ng-template #noRecords>

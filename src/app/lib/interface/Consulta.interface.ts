@@ -1,7 +1,7 @@
 export interface ConsPagos {
   paymentid:      number;
   paymentdate:    Date;
-  clientClientid: number;
+  clientClient: string;
 }
 
 export interface ConsContract {

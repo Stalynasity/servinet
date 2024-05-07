@@ -1,0 +1,17 @@
+<div >
+  <form [formGroup]="UsuaForm" autocomplete="off" (ngSubmit)="onSubmitClientData()">
+    <label  class="block text-900 font-medium mb-2">Usuarname</label>
+    <input type="text" pInputText class="w-full mb-3" formControlName="usarname">
+
+    <label class="block text-900 font-medium mb-2">Email</label>
+    <input  type="text" pInputText class="w-full mb-3" formControlName="email" >
+
+    <label class="block text-900 font-medium mb-2">Contraseña</label>
+    <input  type="text" pInputText class="w-full mb-3" formControlName="pass" >
+
+    <label class="block text-900 font-medium mb-2">Rol</label>
+        <p-dropdown formControlName="rol" [options]="roles" optionLabel="label" optionValue="value"></p-dropdown>
+
+    <button type="submit" pButton pRipple label="Ingresar" class="w-full mt-5" [disabled]="!UsuaForm.valid"></button>
+  </form>
+  </div>

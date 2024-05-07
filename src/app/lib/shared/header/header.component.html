@@ -5,12 +5,20 @@
 
 
     <div class="layout-topbar-menu flex flex-row-reverse flex-wrap">
-      <button class="p-link layout-topbar-button mr-3" routerLink="/auth/login">Login</button>
       <button class="p-link layout-topbar-button mr-3" routerLink="/page/consultas/">Consultas</button>
       <button class="p-link layout-topbar-button mr-3" routerLink="/page/planes">Planes</button>
+
+
+      <div *ngFor="let item of elementosMenuRol">
+        <button class="p-link layout-topbar-button mr-3" [routerLink]="item.ruta">{{item.opcion}}</button>
+      </div>
+
     </div>
 
-    <a class="layout-topbar-logo"> {{usuarioMenu}} </a>
-
+    @if (Navisual) {
+      <button class="p-link layout-topbar-button mr-3" routerLink="/auth/login">Login</button>
+    } @else {
+      <button class="p-link layout-topbar-button mr-3" (click)="logout()">Cerrar sesión</button>
+    }
   </p-header>
 </div>

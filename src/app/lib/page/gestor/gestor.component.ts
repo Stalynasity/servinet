@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class GestorComponent {
 
+  datoForm = [
+    {descripcion: 'Ingresar un nuevo usuario', url:'usuanew', btn:'Agregar'},
+    {descripcion: 'Asignar cajeros a cajas', url:'', btn:'Ordenar'},
+  ]
+
 }

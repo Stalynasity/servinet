@@ -1,5 +1,5 @@
 import { AuthService } from './../../services/auth.service';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../../interface/LoginRequest.interface';
@@ -23,25 +23,38 @@ export class LoginComponent {
     password: ['', [Validators.required]],
   });
 
-  errorDeInicioDeSesion: string = '';
+@Input() val: string = '';
+
+  errorDeInicioDeSesion?: string = '';
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private authService: AuthService
-  ) {}
+
+  ) { }
 
   login() {
     const loginRequest: LoginRequest = this.miFormulario.value;
     this.authService.login(loginRequest).subscribe(
       response => {
-        // console.log(response);
-        if (!response) {
-          this.router.navigateByUrl('auth/clientenew')
+        console.log(response);
+        if (response.statusCode === 200) {
+          switch (response.data?.rolId) {
+            case 1:
+              this.router.navigateByUrl('auth/gestor');
+              break;
+            case 2:
+              this.router.navigateByUrl('auth/cajero');
+              break;
+            default:
+          }
+
         } else {
-          this.errorDeInicioDeSesion = response;
+          this.errorDeInicioDeSesion = response.message;
         }
       },
+
+
     );
   }
-
 }
